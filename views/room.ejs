@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Chat App</title>
+		<script>
+			//
+			const roomName = "<%= roomName %>"
+		</script>
+		<script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
+		<script defer src="script.js"></script>
+		<style>
+			@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
+			* {
+				font-weight: bold;
+				font-family: 'Montserrat', sans-serif;
+			}
+
+			body {
+				color: #fff;
+				background-color: #e2effa;
+
+				padding: 0;
+				margin: 0;
+				display: flex;
+				justify-content: center;
+			}
+
+			#message-container {
+				width: 80%;
+				max-width: 1200px;
+				margin-bottom: 150px;
+			}
+
+			#message-container div {
+				border-radius: 5px;
+				background-color: #67aafa;
+				padding: 10px;
+				margin-top: 10px;
+
+				box-shadow: 0 1px 3px rgba(148, 85, 85, 0.12), 0 1px 2px rgba(0,0,0,0.24);
+			}
+
+			#message-container div:nth-child(2n) {
+				background-color: #8aabe6;
+			}
+
+			#send-container {
+				position: fixed;
+				padding-bottom: 60px;
+				bottom: 0;
+				max-width: 1200px;
+				width: 80%;
+				display: flex;
+			}
+
+			#message-input {
+				font-size: 1em;
+				font-weight: 500;
+				border-bottom: 4px solid #2ec0f9;
+				background: rgba(0,0,0,0.06);
+				border-top: none;
+				border-left: none;
+				outline: none;
+				flex-grow: 1;
+			}
+
+			#send-button {
+				color: #fff;
+				font-weight: bold;
+				font-family: 'Montserrat', sans-serif;
+				outline: none;
+				border: none;
+				padding: 10px;
+				margin-left: 10px;
+				font-size: 1.2em;
+				border-radius: 10px;
+				background-color: #2ec0f9;
+				cursor: pointer;
+
+				box-shadow: 0 4px 7px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+			}
+
+			#send-button:active {
+				box-shadow: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="message-container"></div>
+		<form id="send-container">
+			<input type="text" id="message-input" />
+			<button type="submit" id="send-button">Send</button>
+		</form>
+	</body>
+</html>

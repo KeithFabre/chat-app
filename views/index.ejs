@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Chat App</title>
+		<script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
+		<script defer src="script.js"></script>
+		<style>
+			@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
+
+			* {
+				font-weight: bold;
+				font-family: "Montserrat", sans-serif;
+			}
+
+			body {
+				background-color: #e2effa;
+				padding: 0;
+				margin: 0;
+			}
+
+			.index {
+				margin-top: 2em;
+				display: flex;
+				flex-direction: column;
+				margin-left: 2em;
+			}
+
+			#room-container {
+				margin-bottom: 1.2em;
+			}
+
+			.room-name {
+				font-size: 1.3em;
+				justify-content: flex-start;
+			}
+
+			.room-name:not(:first-child) {
+				margin-top: 1em;
+			}
+
+			#room-container a {
+				text-decoration: none;
+				color: #4d4d4d;
+				border-bottom: 3px solid #8aabe6;
+			}
+
+			input {
+				font-size: 1em;
+				font-weight: 500;
+				border-bottom: 4px solid #2ec0f9;
+				background: rgba(0,0,0,0.06);
+				border-top: none;
+				border-left: none;
+				outline: none;
+			}
+
+			button {
+				color: #fff;
+				font-weight: bold;
+				font-family: "Montserrat", sans-serif;
+				outline: none;
+				border: none;
+				padding: 5px;
+				margin-left: 10px;
+				font-size: 1.2em;
+				border-radius: 10px;
+				background-color: #2ec0f9;
+				cursor: pointer;
+
+				box-shadow: 0 4px 7px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+			}
+
+			button:active {
+				box-shadow: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="index">
+			<!-- for list of rooms -->
+			<div id="room-container">
+				<% Object.keys(rooms).forEach(room => { %>
+				<div class="room-name"><%= room %></div>
+				<a href="/<%= room %>">Join</a>
+				<% }) %>
+			</div>
+			<form action="/room" method="POST">
+				<input name="room" type="text" required />
+				<!--name room will be used on req.params.room -->
+				<button type="submit">New Room</button>
+			</form>
+		</div>
+	</body>
+</html>
